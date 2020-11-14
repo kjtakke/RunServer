@@ -14,3 +14,5 @@ from django.core.asgi import get_asgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RunServer.settings')
 
 application = get_asgi_application()
+
+#Channels go to: https://channels.readthedocs.io/en/stable/installation.html
