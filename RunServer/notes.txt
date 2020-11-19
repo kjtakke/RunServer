@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
-from .models import Art
-import pandas as pd
+#-----QUERIES-----
+
+#from django.shortcuts import render, redirect
+#from .models import Art
+#import pandas as pd
 
 
 #PANDAS
@@ -30,3 +32,6 @@ def index(request):
 def index(request):
     context = {'artwork':Art.objects.raw('SELECT * FROM BrennanCox_Art')}
     return render(request, 'BrennanCox/index.html', context)
+
+
+
