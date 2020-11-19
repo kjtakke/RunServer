@@ -1,0 +1,32 @@
+from django.shortcuts import render, redirect
+from .models import Art
+import pandas as pd
+
+
+#PANDAS
+artModel = pd.DataFrame(list(Art.objects.all().values()))
+
+def index(request):
+    artModelallData = []
+    for i in range(artModel.shape[0]):
+        artModeldata=artModel.iloc[i]
+        artModelallData.append(dict(artModeldata))
+    context = {'artwork':artModelallData}
+    return render(request, 'BrennanCox/index.html', context)
+
+
+#DJANGO
+def index(request):
+    artModelallData = []
+    for i in range(artModel.shape[0]):
+        artModeldata=artModel.iloc[i]
+        artModelallData.append(dict(artModeldata))
+
+    context = {'artwork':Art.objects.all()}
+    return render(request, 'BrennanCox/index.html', context)
+
+
+#SQL
+def index(request):
+    context = {'artwork':Art.objects.raw('SELECT * FROM BrennanCox_Art')}
+    return render(request, 'BrennanCox/index.html', context)
